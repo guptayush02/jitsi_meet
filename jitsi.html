@@ -1,0 +1,35 @@
+<!-- file:///Users/ayushgupta/Desktop/jitsi.html?roomName=dkdkdkdk&from=external -->
+
+<html itemscope itemtype="http://schema.org/Product" prefix="og: http://ogp.me/ns#" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    </head>
+    <body>
+        <script src="https://meet.jit.si/external_api.js"></script>
+        <script>
+            const urlSearchParams = new URLSearchParams(window.location.search);
+            const params = Object.fromEntries(urlSearchParams.entries());
+            const { roomName, from } = params
+            let displayVideo = from === "external" ? false : true
+
+            var domain = `meet.jit.si`;
+            var options = {
+                roomName,
+                width: 300,
+                height: 500,
+                parentNode: undefined,
+                configOverwrite: {
+                    "prejoinPageEnabled": false,
+                    "startWithAudioMuted": false,
+                    "startWithVideoMuted": displayVideo
+                },
+                "userInfo": {
+                    "displayName": from === "external" ? "Someone from outside" : "Inside",
+                },
+                interfaceConfigOverwrite: {}
+            }
+            var api = new JitsiMeetExternalAPI(domain, options);
+        </script>
+    </body>
+</html>
