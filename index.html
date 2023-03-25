@@ -30,6 +30,23 @@
                 interfaceConfigOverwrite: {}
             }
             var api = new JitsiMeetExternalAPI(domain, options);
+
+            
+            // window.addEventListener("DOMContentLoaded", function() {
+            //     document.querySelectorAll('.css-1l3cxcu-linkLabel')[1].click()
+            // });
+
+            // add ajax to hit rails backend server to triger video call on frontend
+            var xhr = new XMLHttpRequest();
+            const url = `http://44.203.248.151:3000/calling?room_name=${roomName}`
+            xhr.open("GET", url, true);
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log("======>", this.responseText);
+                }
+            }
+            // Sending our request 
+            xhr.send();
         </script>
     </body>
 </html>
