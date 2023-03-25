@@ -13,8 +13,8 @@
             const { roomName, from } = params
             let displayVideo = from === "external" ? false : true
 
-            var domain = `meet.jit.si`;
-            var options = {
+            const domain = `meet.jit.si`;
+            const options = {
                 roomName,
                 width: 800,
                 height: 1700,
@@ -29,7 +29,7 @@
                 },
                 interfaceConfigOverwrite: {}
             }
-            var api = new JitsiMeetExternalAPI(domain, options);
+            const api = new JitsiMeetExternalAPI(domain, options);
 
             
             // window.addEventListener("DOMContentLoaded", function() {
@@ -37,8 +37,8 @@
             // });
 
             // add ajax to hit rails backend server to triger video call on frontend
-            var xhr = new XMLHttpRequest();
-            const url = `http://44.203.248.151:3000/calling?room_name=${roomName}`
+            const xhr = new XMLHttpRequest();
+            const url = `https://44.203.248.151:3000/calling?room_name=${roomName}`
             xhr.open("GET", url, true);
             xhr.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
