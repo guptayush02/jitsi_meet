@@ -36,9 +36,11 @@
             //     document.querySelectorAll('.css-1l3cxcu-linkLabel')[1].click()
             // });
 
+            console.log("00--->")
             // add ajax to hit rails backend server to triger video call on frontend
             const xhr = new XMLHttpRequest();
-            const url = `https://44.203.248.151:3000/calling?room_name=${roomName}`
+            // const url = `https://44.203.248.151:3000/calling?room_name=${roomName}`
+            const url = `http://doorbellonline.in/calling?room_name=${roomName}`
             xhr.open("GET", url, true);
             xhr.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
