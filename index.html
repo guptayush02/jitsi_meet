@@ -33,16 +33,26 @@
             const api = new JitsiMeetExternalAPI(domain, options);
 
             // add ajax to hit rails backend server to triger video call on frontend
-            const xhr = new XMLHttpRequest();
-            const url = `https://doorbellonline.in/calling?room_name=${roomName}`
-            xhr.open("GET", url, true);
-            xhr.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    console.log("======>", this.responseText);
-                }
+            // const xhr = new XMLHttpRequest();
+            // const url = `https://doorbellonline.in/calling?room_name=${roomName}`;
+            // xhr.open("GET", url, true);
+            // xhr.onreadystatechange = function () {
+            //     if (this.readyState == 4 && this.status == 200) {
+            //         console.log("======>", this.responseText);
+            //     }
+            // }
+            // // Sending our request
+            // xhr.send();
+
+            const url = `https://doorbellonline.in/calling?room_name=${roomName}`;
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+                console.log("this.responseText---->", this.responseText)
             }
-            // Sending our request 
-            xhr.send();
+            xhttp.open("GET", url);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.setRequestHeader("Access-Control-Allow-Headers", "*");
+            xhttp.send(`room_name=${roomName}`);
         </script>
     </body>
 </html>
