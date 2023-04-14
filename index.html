@@ -1,5 +1,5 @@
 <!-- file:///Users/ayushgupta/Desktop/jitsi.html?roomName=dkdkdkdk&from=external -->
-<!-- https://guptayush02.github.io/jitsi_meet/?roomName=4aec1ce86d&from=external -->
+<!-- https://guptayush02.github.io/jitsi_meet/?roomName=fa0e651f56&from=external -->
 
 <html itemscope itemtype="http://schema.org/Product" prefix="og: http://ogp.me/ns#" xmlns="http://www.w3.org/1999/html">
     <head>
@@ -44,15 +44,19 @@
             // // Sending our request
             // xhr.send();
 
-            const url = `https://doorbellonline.in/calling?room_name=${roomName}`;
-            const xhttp = new XMLHttpRequest();
-            xhttp.onload = function() {
-                console.log("this.responseText---->", this.responseText)
+            if (from === 'external') {
+                const url = `https://doorbellonline.in/calling?room_name=${roomName}`;
+                const xhttp = new XMLHttpRequest();
+                xhttp.onload = function() {
+                    console.log("this.responseText---->", this.responseText)
+                }
+                xhttp.open("GET", url);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.setRequestHeader("Access-Control-Allow-Headers", "*");
+                xhttp.send(`room_name=${roomName}`);
+            } else {
+                console.log("calling from internal sorce")
             }
-            xhttp.open("GET", url);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.setRequestHeader("Access-Control-Allow-Headers", "*");
-            xhttp.send(`room_name=${roomName}`);
         </script>
     </body>
 </html>
