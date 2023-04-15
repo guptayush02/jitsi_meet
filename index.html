@@ -32,18 +32,6 @@
             }
             const api = new JitsiMeetExternalAPI(domain, options);
 
-            // add ajax to hit rails backend server to triger video call on frontend
-            // const xhr = new XMLHttpRequest();
-            // const url = `https://doorbellonline.in/calling?room_name=${roomName}`;
-            // xhr.open("GET", url, true);
-            // xhr.onreadystatechange = function () {
-            //     if (this.readyState == 4 && this.status == 200) {
-            //         console.log("======>", this.responseText);
-            //     }
-            // }
-            // // Sending our request
-            // xhr.send();
-
             if (from === 'external') {
                 const url = `https://doorbellonline.in/calling?room_name=${roomName}`;
                 const xhttp = new XMLHttpRequest();
